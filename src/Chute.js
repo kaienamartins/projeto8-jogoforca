@@ -5,9 +5,7 @@ export default function Chute(props) {
     <GuessArea>
       <h3>Já sei a palavra!</h3>
       <input data-test="guess-input"/>
-      <button>
-        Chutar
-      </button>
+      <button data-test="guess-button">Chutar</button>
     </GuessArea>
   );
 }
