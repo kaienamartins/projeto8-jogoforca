@@ -8,6 +8,7 @@ import forca6 from "./images/forca6.png"
 import Letras from "./Letras";
 import Jogo from "./Jogo";
 import styled from "styled-components"
+import Chute from "./Chute"
 
 function App() {
   const alphabet = [
@@ -20,11 +21,14 @@ function App() {
     <Global>
       <Letras alphabet={alphabet}/>
       <Jogo images={images}/>
+      <Chute/>
     </Global>
   );
 }
 
 const Global = styled.div`
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
   font-family: "Roboto", sans-serif;
   margin: 0 auto;
   width: 50%;
