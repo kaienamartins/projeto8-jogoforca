@@ -17,7 +17,7 @@ export default function Letras(props) {
 const AlphabetWrapper = styled.div`
   display: flex;
   position: relative;
-  top: 360px;
+  top: 550px;
   flex-wrap: wrap;
   width: 650px;
 `;

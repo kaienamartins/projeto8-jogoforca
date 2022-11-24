@@ -7,6 +7,7 @@ import forca5 from "./images/forca5.png"
 import forca6 from "./images/forca6.png"
 import Letras from "./Letras";
 import Jogo from "./Jogo";
+import styled from "styled-components"
 
 function App() {
   const alphabet = [
@@ -16,11 +17,24 @@ function App() {
   const images = [forca0, forca1, forca2, forca3, forca4, forca5,forca6];
 
   return (
-    <>
+    <Global>
       <Letras alphabet={alphabet}/>
       <Jogo images={images}/>
-    </>
+    </Global>
   );
 }
+
+const Global = styled.div`
+  font-family: "Roboto", sans-serif;
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+  padding: 10px;
+  width: max-content;
+  display: block;
+  position: relative;
+  width: max-content;
+`;
+
 
 export default App;

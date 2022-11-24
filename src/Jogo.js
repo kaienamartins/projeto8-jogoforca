@@ -12,9 +12,9 @@ export default function Jogo(props) {
 
 
 const Photo = styled.div`
-  width: 350px;
-  height: 350px;
+  width: 100%;
+  height: 400px;
   display: flex;
-  position: absolute;
-  left: -20px;
+  position: relative;
+  right: 180px;
 `;
