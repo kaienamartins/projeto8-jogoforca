@@ -9,18 +9,39 @@ import Letras from "./Letras";
 import Jogo from "./Jogo";
 import styled from "styled-components"
 import Chute from "./Chute"
+import Palavras from "./Palavras"
+import { useState } from "react"
 
-function App() {
+function App(props) {
   const alphabet = [
     "a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"
   ];
-
   const images = [forca0, forca1, forca2, forca3, forca4, forca5,forca6];
+  const [chosenWord, setChosenWord] = useState([]);
+  const [screenWord, setScreenWord] = useState([]);
+  const [diacritics, setDiacritics] = useState("");
+
+  const start = () => {
+    sort();
+  }
+
+  const sort = () => {
+    const sortWord = Math.floor(Math.random() * Palavras.length);
+    const word = Palavras[sortWord];
+    const newWord = word.split("");
+    setChosenWord(newWord);
+    let dots = [];
+    newWord.forEach((letter) => dots.push(" _"));
+    setScreenWord(dots);
+    const subsWord = word.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    setDiacritics(subsWord);
+    console.log(word);
+  };
 
   return (
     <Global>
       <Letras alphabet={alphabet}/>
-      <Jogo images={images}/>
+      <Jogo images={images} start={start} />
       <Chute/>
     </Global>
   );

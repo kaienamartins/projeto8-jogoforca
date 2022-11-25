@@ -6,7 +6,7 @@ export default function Jogo(props) {
       <Photo>
         <img data-test="game-image" src={props.images[0]} alt="" />
       </Photo>
-      <ChooseWordBtn>
+      <ChooseWordBtn onClick={props.start}>
         Escolher Palavra
       </ChooseWordBtn>
     </>
