@@ -20,9 +20,14 @@ function App(props) {
   const [chosenWord, setChosenWord] = useState([]);
   const [screenWord, setScreenWord] = useState([]);
   const [diacritics, setDiacritics] = useState("");
+  const [colours, setColours] = useState("#1a1a1a");
+  const [usedLetter, setUsedLetter] = useState(alphabet);
+  const [errors, setErrors] = useState(0);
+  
 
   const start = () => {
     sort();
+    setUsedLetter([]);
   }
 
   const sort = () => {
@@ -38,10 +43,41 @@ function App(props) {
     console.log(word);
   };
 
+  const right = (letter) => {
+    const newScreenWord = [...screenWord];
+    chosenWord.forEach((l, i) => {
+      if (diacritics[i] === letter) {
+        newScreenWord[i] = l;
+      }
+    });
+    setScreenWord(newScreenWord);
+
+    if(!newScreenWord.includes(" _")){
+      setColours("#35ab58");
+    }
+  };
+
+  const wrong = () => {
+    const errorsOnGame = errors + 1;
+    setErrors(errorsOnGame);
+    if (setErrors === 6) {
+      setColours("#ff1c1c");
+    }
+  };
+
+  const clicked = (letter) => {
+    setUsedLetter([...usedLetter, letter]);
+    if (diacritics.includes(letter)) {
+      right(letter);
+    } else {
+      wrong(letter);
+    }
+  };
+
   return (
     <Global>
-      <Letras alphabet={alphabet}/>
-      <Jogo images={images} start={start} />
+      <Letras alphabet={alphabet} usedLetter={usedLetter} clicked={clicked}/>
+      <Jogo images={images} start={start} colours={colours}/>
       <Chute/>
     </Global>
   );
@@ -62,4 +98,4 @@ const Global = styled.div`
 `;
 
 
-export default App;
+export default App;                                                                  
