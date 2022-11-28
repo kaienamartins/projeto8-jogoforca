@@ -4,8 +4,12 @@ export default function Chute(props) {
   return (
     <GuessArea>
       <h3>Já sei a palavra!</h3>
-      <input data-test="guess-input"/>
-      <button data-test="guess-button">Chutar</button>
+      <input data-test="guess-input"  
+        type="text"
+        disabled={props.disabled}
+        value={props.guessing}
+        onChange={(e) => props.setGuessing(e.target.value)}/>
+      <button data-test="guess-button" onClick={props.guessChosenWord}>Chutar</button>
     </GuessArea>
   );
 }
@@ -16,7 +20,7 @@ const GuessArea = styled.div`
   display: flex;
   justify-content: space-around;
   position: relative;
-  top: 200px;
+  top: 10px;
 
   h3 {
     font-family: "Roboto", sans-serif;

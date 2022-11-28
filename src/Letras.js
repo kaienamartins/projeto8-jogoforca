@@ -1,11 +1,15 @@
 import styled from "styled-components";
 
 export default function Letras(props) {
-  let {alphabet} = props
+  let {alphabet, usedLetter, clicked} = props
   return (
     <AlphabetWrapper>
       {alphabet.map((letter) => (
         <ButtonLetters
+        data-test="letter"
+        key={letter}
+        onClick={() => clicked(letter)}
+          disabled={usedLetter.includes(letter)}
         >
           {letter}
         </ButtonLetters>
@@ -17,7 +21,7 @@ export default function Letras(props) {
 const AlphabetWrapper = styled.div`
   display: flex;
   position: relative;
-  top: 560px;
+  top: 200px;
   flex-wrap: wrap;
   width: 650px;
 `;
