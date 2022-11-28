@@ -23,7 +23,7 @@ function App(props) {
   const [colours, setColours] = useState("#1a1a1a");
   const [usedLetter, setUsedLetter] = useState(alphabet);
   const [errors, setErrors] = useState(0);
-  
+  const [guessing, setGuessing] = useState("");
 
   const start = () => {
     sort();
@@ -74,11 +74,24 @@ function App(props) {
     }
   };
 
+  const guessChosenWord = () => {
+    let chosen = "";
+    chosenWord.forEach((letter) => (chosen += letter));
+
+    if (guessing === diacritics) {
+      setColours("#35ab58");
+      setErrors(0);
+    } else {
+      setErrors(6);
+      setColours("#ff1c1c");
+    }
+  };
+
   return (
     <Global>
       <Letras alphabet={alphabet} usedLetter={usedLetter} clicked={clicked}/>
       <Jogo images={images} start={start} colours={colours}/>
-      <Chute/>
+      <Chute guessing={guessing} setGuessing={setGuessing} guessChosenWord={guessChosenWord}/>
     </Global>
   );
 }
@@ -98,4 +111,4 @@ const Global = styled.div`
 `;
 
 
-export default App;                                                                  
+export default App;
